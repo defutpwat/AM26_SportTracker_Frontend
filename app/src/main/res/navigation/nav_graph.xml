@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Navigation graph — defines all fragment destinations and transitions -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
-    <!-- Home (Dashboard) -->
     <fragment
         android:id="@+id/homeFragment"
         android:name="wat.edu.pl.projektam.presentation.home.HomeFragment"
         android:label="@string/nav_home"
         tools:layout="@layout/fragment_home" />
 
-    <!-- Workout History -->
-    <!-- <fragment
-        android:id="@+id/workoutHistoryFragment"
-        android:name="wat.edu.pl.projektam.presentation.workout.WorkoutHistoryFragment"
-        android:label="@string/nav_history" /> -->
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="wat.edu.pl.projektam.presentation.history.HistoryFragment"
+        android:label="@string/nav_history" />
 
-    <!-- Profile -->
-    <!-- <fragment
+    <fragment
         android:id="@+id/profileFragment"
         android:name="wat.edu.pl.projektam.presentation.profile.ProfileFragment"
-        android:label="@string/nav_profile" /> -->
+        android:label="@string/nav_profile" />
 
-    <!-- Settings -->
-    <!-- <fragment
+    <fragment
         android:id="@+id/settingsFragment"
         android:name="wat.edu.pl.projektam.presentation.settings.SettingsFragment"
-        android:label="@string/nav_settings" /> -->
+        android:label="@string/nav_settings" />
 
 </navigation>
