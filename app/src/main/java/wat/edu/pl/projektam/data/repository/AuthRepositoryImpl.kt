@@ -1,7 +1,10 @@
 package wat.edu.pl.projektam.data.repository
 
+import com.google.firebase.messaging.FirebaseMessaging
+import kotlinx.coroutines.tasks.await
 import wat.edu.pl.projektam.data.local.preferences.TokenManager
 import wat.edu.pl.projektam.data.remote.api.AuthApiService
+import wat.edu.pl.projektam.data.remote.dto.FcmTokenRequest
 import wat.edu.pl.projektam.data.remote.dto.LoginRequest
 import wat.edu.pl.projektam.data.remote.dto.RegisterRequest
 import wat.edu.pl.projektam.domain.repository.AuthRepository
@@ -21,6 +24,7 @@ class AuthRepositoryImpl @Inject constructor(
                     tokenManager.saveToken(body.token)
                     tokenManager.saveUserEmail(body.email)
                     tokenManager.saveUserRole(body.role)
+                    sendFcmToken()
                     Resource.Success(Unit)
                 } ?: Resource.Error("Pusta odpowiedź serwera")
             } else {
@@ -46,6 +50,7 @@ class AuthRepositoryImpl @Inject constructor(
                     tokenManager.saveToken(body.token)
                     tokenManager.saveUserEmail(body.email)
                     tokenManager.saveUserRole(body.role)
+                    sendFcmToken()
                     Resource.Success(Unit)
                 } ?: Resource.Error("Pusta odpowiedź serwera")
             } else {
@@ -62,4 +67,11 @@ class AuthRepositoryImpl @Inject constructor(
     override fun logout() = tokenManager.clearAll()
 
     override fun isLoggedIn() = tokenManager.isLoggedIn()
+
+    private suspend fun sendFcmToken() {
+        runCatching {
+            val token = FirebaseMessaging.getInstance().token.await()
+            api.updateFcmToken(FcmTokenRequest(token))
+        }
+    }
 }
