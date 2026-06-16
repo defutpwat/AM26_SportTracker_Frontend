@@ -1,0 +1,58 @@
+<resources>
+    <!-- App -->
+    <string name="app_name">SportTracker</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Główna</string>
+    <string name="nav_history">Historia</string>
+    <string name="nav_profile">Profil</string>
+    <string name="nav_settings">Ustawienia</string>
+
+    <!-- Home Screen -->
+    <string name="home_welcome">Witaj w SportTracker</string>
+    <string name="home_start_workout">Rozpocznij trening</string>
+    <string name="home_recent_workouts">Ostatnie treningi</string>
+    <string name="home_no_workouts">Brak treningów. Rozpocznij swój pierwszy!</string>
+
+    <!-- Auth -->
+    <string name="auth_login">Zaloguj się</string>
+    <string name="auth_register">Zarejestruj się</string>
+    <string name="auth_email">Email</string>
+    <string name="auth_password">Hasło</string>
+    <string name="auth_confirm_password">Potwierdź hasło</string>
+    <string name="auth_display_name">Nazwa wyświetlana</string>
+    <string name="auth_no_account">Nie masz konta?</string>
+    <string name="auth_has_account">Masz już konto?</string>
+
+    <!-- Workout -->
+    <string name="workout_active">Trening w toku</string>
+    <string name="workout_distance">Dystans</string>
+    <string name="workout_duration">Czas trwania</string>
+    <string name="workout_pace">Tempo</string>
+    <string name="workout_steps">Kroki</string>
+    <string name="workout_stop">Zakończ trening</string>
+    <string name="workout_type_running">Bieganie</string>
+    <string name="workout_type_walking">Spacer</string>
+    <string name="workout_type_strength">Siłowy</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Profil</string>
+    <string name="profile_edit">Edytuj profil</string>
+    <string name="profile_logout">Wyloguj się</string>
+    <string name="profile_total_workouts">Łączna liczba treningów</string>
+    <string name="profile_total_distance">Łączny dystans</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Ustawienia</string>
+    <string name="settings_theme">Motyw</string>
+    <string name="settings_theme_light">Jasny</string>
+    <string name="settings_theme_dark">Ciemny</string>
+    <string name="settings_theme_system">Domyślny systemowy</string>
+    <string name="settings_language">Język</string>
+
+    <!-- General -->
+    <string name="save">Zapisz</string>
+    <string name="cancel">Anuluj</string>
+    <string name="error_generic">Coś poszło nie tak. Spróbuj ponownie.</string>
+    <string name="loading">Ładowanie…</string>
+</resources>

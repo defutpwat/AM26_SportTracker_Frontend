@@ -1,0 +1,58 @@
+<resources>
+    <!-- App -->
+    <string name="app_name">SportTracker</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_history">History</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Home Screen -->
+    <string name="home_welcome">Welcome to SportTracker</string>
+    <string name="home_start_workout">Start Workout</string>
+    <string name="home_recent_workouts">Recent Workouts</string>
+    <string name="home_no_workouts">No workouts yet. Start your first one!</string>
+
+    <!-- Auth -->
+    <string name="auth_login">Log In</string>
+    <string name="auth_register">Register</string>
+    <string name="auth_email">Email</string>
+    <string name="auth_password">Password</string>
+    <string name="auth_confirm_password">Confirm Password</string>
+    <string name="auth_display_name">Display Name</string>
+    <string name="auth_no_account">Don\'t have an account?</string>
+    <string name="auth_has_account">Already have an account?</string>
+
+    <!-- Workout -->
+    <string name="workout_active">Workout in Progress</string>
+    <string name="workout_distance">Distance</string>
+    <string name="workout_duration">Duration</string>
+    <string name="workout_pace">Pace</string>
+    <string name="workout_steps">Steps</string>
+    <string name="workout_stop">Stop Workout</string>
+    <string name="workout_type_running">Running</string>
+    <string name="workout_type_walking">Walking</string>
+    <string name="workout_type_strength">Strength</string>
+
+    <!-- Profile -->
+    <string name="profile_title">Profile</string>
+    <string name="profile_edit">Edit Profile</string>
+    <string name="profile_logout">Log Out</string>
+    <string name="profile_total_workouts">Total Workouts</string>
+    <string name="profile_total_distance">Total Distance</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system">System Default</string>
+    <string name="settings_language">Language</string>
+
+    <!-- General -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="loading">Loading…</string>
+</resources>
