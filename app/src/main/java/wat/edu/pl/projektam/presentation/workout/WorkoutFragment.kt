@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Filter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -38,6 +39,7 @@ class WorkoutFragment : Fragment() {
 
     private var googleMap: GoogleMap? = null
     private val routePoints = mutableListOf<LatLng>()
+    private var selectedType = "RUNNING"
 
     private val locationPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -111,18 +113,34 @@ class WorkoutFragment : Fragment() {
             getString(R.string.workout_type_walking),
             getString(R.string.workout_type_strength)
         )
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, types)
+        val adapter = object : ArrayAdapter<String>(
+            requireContext(), android.R.layout.simple_dropdown_item_1line, types
+        ) {
+            override fun getFilter() = object : Filter() {
+                override fun performFiltering(c: CharSequence?) = FilterResults().apply {
+                    values = types; count = types.size
+                }
+                override fun publishResults(c: CharSequence?, r: FilterResults?) = notifyDataSetChanged()
+            }
+        }
         binding.dropdownType.setAdapter(adapter)
-        binding.dropdownType.setText(types[0], false)
+        binding.dropdownType.setOnItemClickListener { _, _, position, _ ->
+            selectedType = when (position) {
+                1 -> "WALKING"
+                2 -> "STRENGTH"
+                else -> "RUNNING"
+            }
+        }
+        // Ustaw tekst w aktualnym języku na podstawie zapisanego typu
+        val currentText = when (selectedType) {
+            "WALKING" -> getString(R.string.workout_type_walking)
+            "STRENGTH" -> getString(R.string.workout_type_strength)
+            else -> getString(R.string.workout_type_running)
+        }
+        binding.dropdownType.setText(currentText, false)
     }
 
-    private fun selectedWorkoutType(): String {
-        return when (binding.dropdownType.text.toString()) {
-            getString(R.string.workout_type_walking) -> "WALKING"
-            getString(R.string.workout_type_strength) -> "STRENGTH"
-            else -> "RUNNING"
-        }
-    }
+    private fun selectedWorkoutType() = selectedType
 
     // ── Start / Stop ──────────────────────────────────────────────────────
 
@@ -189,6 +207,11 @@ class WorkoutFragment : Fragment() {
                 .width(10f)
                 .color(requireContext().getColor(com.google.android.material.R.color.m3_sys_color_dynamic_dark_primary))
         )
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupWorkoutTypeDropdown()
     }
 
     override fun onDestroyView() {

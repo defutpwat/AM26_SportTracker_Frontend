@@ -4,7 +4,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -22,9 +21,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val CERT_PIN = "sha256/w8XX9UwuTTLXLHHfYkfHANyR+MuYklXRkOfXChCxSFo="
-    private const val SERVER_HOST = "10.0.2.2"
-
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor =
@@ -35,23 +31,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideCertificatePinner(): CertificatePinner =
-        CertificatePinner.Builder()
-            .add(SERVER_HOST, CERT_PIN)
-            .build()
-
-    @Provides
-    @Singleton
     fun provideOkHttpClient(
         authInterceptor: AuthInterceptor,
-        loggingInterceptor: HttpLoggingInterceptor,
-        certificatePinner: CertificatePinner
+        loggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(authInterceptor)
             .addInterceptor(loggingInterceptor)
-            // Pinning aktywny — pamiętaj o uzupełnieniu CERT_PIN przed uruchomieniem z backendem.
-            .certificatePinner(certificatePinner)
             .connectTimeout(Constants.CONNECT_TIMEOUT_SEC, TimeUnit.SECONDS)
             .readTimeout(Constants.READ_TIMEOUT_SEC, TimeUnit.SECONDS)
             .build()
